@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8f9fc;
+  --foreground: #0f1a2e;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* ===== Sidebar scrollbar ===== */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+/* ===== Fade-in animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.animate-fade-in-delay-1 {
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+/* ===== Card hover glow ===== */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e1e7f3;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 30px rgba(15, 26, 46, 0.1),
+    0 0 0 1px rgba(201, 168, 76, 0.2);
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+/* ===== Shimmer button ===== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btn-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 26, 46, 0.3);
+}
+
+.btn-shimmer:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===== Input focus glow ===== */
+.input-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-glow:focus {
+  border-color: #c9a84c;
+  box-shadow:
+    0 0 0 3px rgba(201, 168, 76, 0.15),
+    0 4px 12px rgba(15, 26, 46, 0.06);
+  outline: none;
+}
+
+/* ===== Image zoom on hover ===== */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ===== Sidebar nav glow ===== */
+.nav-item-glow {
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.nav-item-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  opacity: 0;
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(255, 255, 255, 0.05));
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.nav-item-glow:hover::before {
+  opacity: 1;
+}
+
+.nav-item-active {
+  background: rgba(201, 168, 76, 0.12) !important;
+  box-shadow: inset 0 0 20px rgba(201, 168, 76, 0.05);
+}
+
+/* ===== Toast animation ===== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.toast-animate {
+  animation: slideUp 0.3s ease-out both;
+}
+
+/* ===== Category filter pill ===== */
+.filter-pill {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15, 26, 46, 0.1);
+}
+
+.filter-pill-active {
+  box-shadow: 0 2px 12px rgba(15, 26, 46, 0.2);
+}
+
+/* ===== Subtle background pattern ===== */
+.bg-mesh {
+  background-image:
+    radial-gradient(at 20% 80%, rgba(201, 168, 76, 0.03) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(30, 58, 110, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(15, 26, 46, 0.02) 0px, transparent 70%);
+}
+
+/* ===== LP: Scroll-triggered animations ===== */
+.lp-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lp-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* staggered children */
+.lp-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lp-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+.lp-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.lp-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.lp-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.lp-stagger.is-visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.lp-stagger.is-visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.lp-stagger.is-visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+.lp-stagger.is-visible > *:nth-child(8) { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
+
+/* LP: Floating animation */
+@keyframes lpFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.lp-float {
+  animation: lpFloat 6s ease-in-out infinite;
+}
+
+.lp-float-delay {
+  animation: lpFloat 6s ease-in-out 2s infinite;
+}
+
+/* LP: Gradient text shimmer */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.lp-gradient-text {
+  background-size: 200% auto;
+  animation: gradientShift 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LP: Glowing border card */
+.lp-glow-card {
+  position: relative;
+  background: white;
+  border: 1px solid #e1e7f3;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lp-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, rgba(201, 168, 76, 0.4) 50%, transparent 60%);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.lp-glow-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 26, 46, 0.12), 0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+.lp-glow-card:hover::before {
+  opacity: 1;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* LP: Pulse ring */
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(201, 168, 76, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+}
+
+.lp-pulse {
+  animation: pulseRing 2.5s infinite;
+}
+
+/* LP: Grid pattern background */
+.lp-grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 26, 46, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 26, 46, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* LP: Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lp-count-up {
+  animation: countUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* LP: Step connector line */
+.lp-step-line {
+  position: relative;
+}
+
+.lp-step-line::after {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: calc(50% + 40px);
+  width: calc(100% - 80px);
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #e1e7f3);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .lp-step-line::after {
+    display: none;
+  }
+}
+
+/* LP: Marker highlight */
+.lp-marker {
+  background: linear-gradient(transparent 75%, rgba(255, 222, 89, 0.4) 75%);
+  padding: 0 2px;
+}
+
+.lp-marker-strong {
+  background: linear-gradient(transparent 70%, rgba(255, 222, 89, 0.55) 70%);
+  padding: 0 4px;
+}
+
+/* LP: Pulsing CTA button */
+@keyframes ctaPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 24px rgba(201, 168, 76, 0.3); }
+  50% { transform: scale(1.03); box-shadow: 0 8px 36px rgba(201, 168, 76, 0.45); }
+}
+
+.lp-cta-pulse {
+  animation: ctaPulse 2.5s ease-in-out infinite;
+}
+
+.lp-cta-pulse:hover {
+  animation: none;
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(201, 168, 76, 0.5);
+}
+
+/* LP: Diagonal stripe background */
+.lp-stripe-bg {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(201, 168, 76, 0.02) 10px,
+    rgba(201, 168, 76, 0.02) 20px
+  );
+}
+
+/* LP: Dot pattern background */
+/* LP: Infinite horizontal scroll */
+@keyframes lpScrollX {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.lp-scroll-track {
+  animation: lpScrollX 90s linear infinite;
+}
+
+.lp-scroll-track:hover {
+  animation-play-state: paused;
+}
+
+.lp-dot-bg {
+  background-image: radial-gradient(rgba(201, 168, 76, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
