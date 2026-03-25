@@ -118,7 +118,7 @@ export default function PrivacyPage() {
             <ArrowLeft className="w-4 h-4" />
             トップに戻る
           </Link>
-          <img src="/images/logo-dark.png" alt="SalesAI" className="h-6 w-auto" />
+          <img src="/lp/images/logo-dark.png" alt="SalesAI" className="h-6 w-auto" />
         </div>
       </header>
 

@@ -194,7 +194,7 @@ export default function LandingPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-[#e1e7f3]/60">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <img
-            src="/images/logo-dark.png"
+            src="/lp/images/logo-dark.png"
             alt="SalesAI"
             className="h-8 w-auto"
           />
@@ -1042,7 +1042,7 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
               <img
-                src="/images/logo-white.png"
+                src="/lp/images/logo-white.png"
                 alt="SalesAI"
                 className="h-7 w-auto mb-3"
               />
